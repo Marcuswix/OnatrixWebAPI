@@ -22,7 +22,7 @@ jobs:
           dotnet-version: '8.x'
 
       - name: dotnet restore
-        run: dotnet restore "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi.sln""
+        run: dotnet restore "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi.sln"
         
       - name: Build with dotnet
         run: dotnet build "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi.sln" --configuration Release
