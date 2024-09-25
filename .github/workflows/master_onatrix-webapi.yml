@@ -27,17 +27,20 @@ jobs:
       - name: Build with dotnet
         run: dotnet build "./OnatrixWebApi.sln" --configuration Release
 
+      - name: Create Output Directory
+        run: New-Item -ItemType Directory -Path "C:\Output" -Force  # Skapa katalogen
+
       - name: Publish
-        run: dotnet publish "./OnatrixWebApi/OnatrixWebApi.csproj" --configuration Release --output "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"
+        run: dotnet publish "./OnatrixWebApi/OnatrixWebApi.csproj" --configuration Release --output "C:\Output"  # Använd C:\Output
 
       - name: List Output Directory
-        run: ls "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"  # Check published files
+        run: ls "C:\Output"  # Kontrollera publicerade filer
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"  # Use the correct output path
+          path: "C:\\Output"  # Använd den nya utmatningssökvägen
           
   deploy:
     runs-on: windows-latest
