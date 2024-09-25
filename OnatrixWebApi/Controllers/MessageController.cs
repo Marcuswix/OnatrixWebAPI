@@ -27,7 +27,6 @@ namespace OnatrixWebAPI.Controllers
         {
             if(value != null)
             {
-
                 var recipientAddress = value?.HelpEmail.ToString();
 
                 var emailContent= new EmailContent("Onatrix Confirmation Email")
@@ -53,7 +52,6 @@ namespace OnatrixWebAPI.Controllers
                 {
                     Console.Write(ex.Message.ToString());
                 }
-
             }
             return new BadRequestResult();
         }
