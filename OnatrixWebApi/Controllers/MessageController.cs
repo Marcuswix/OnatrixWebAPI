@@ -38,9 +38,7 @@ namespace OnatrixWebAPI.Controllers
                 try
                 {
                     string sender = _configuration["Values:SenderDomain"]!;
-
                     var emailToSend = new EmailMessage(sender, recipientAddress, emailContent);
-
                     var result = await _emailClient.SendAsync(WaitUntil.Completed, emailToSend);
 
                     if(result.HasCompleted)
