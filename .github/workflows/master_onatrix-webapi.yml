@@ -24,8 +24,11 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: Restore dependencies
-        run: dotnet restore "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln"
+      - name: dotnet restore
+        run: dotnet restore "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\OnatrixWebApi.sln"
+        
+      - name: List Files
+        run: ls "B:\CMS_ECutbildning\OnatrixWebApi"
 
       - name: Build
         run: dotnet build "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln" -c Release
