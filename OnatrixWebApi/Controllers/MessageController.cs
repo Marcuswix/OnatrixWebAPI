@@ -10,7 +10,6 @@ namespace OnatrixWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class MessageController : ControllerBase
     {
         private readonly EmailClient _emailClient;
