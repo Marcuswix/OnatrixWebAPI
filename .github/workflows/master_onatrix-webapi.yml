@@ -22,13 +22,13 @@ jobs:
           dotnet-version: '8.x'
 
       - name: dotnet restore
-        run: dotnet restore "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi.sln"
+        run: dotnet restore "./OnatrixWebApi.sln"  # Adjust the path as needed
         
       - name: Build with dotnet
-        run: dotnet build "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi.sln" --configuration Release
+        run: dotnet build "./OnatrixWebApi.sln" --configuration Release
 
       - name: Publish
-        run: dotnet publish "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\OnatrixWebApi.csproj" --configuration Release --output "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"
+        run: dotnet publish "./OnatrixWebApi/OnatrixWebApi.csproj" --configuration Release --output "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"
 
       - name: List Output Directory
         run: ls "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"  # Check published files
