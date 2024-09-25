@@ -24,8 +24,14 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      - name: Restore dependencies
+        run: dotnet restore "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\OnatrixWebApi.csproj"
+
+      - name: Build
+        run: dotnet build "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\OnatrixWebApi.csproj" -c Release
+
+      - name: Publish
+        run: dotnet publish "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\OnatrixWebApi.csproj" -c Release -o "C:\Output"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
