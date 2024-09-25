@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnatrixWebApi", "OnatrixWebApi\OnatrixWebApi.csproj", "{5C3FF330-7294-4AD1-856C-4677428A97BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C3FF330-7294-4AD1-856C-4677428A97BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3FF330-7294-4AD1-856C-4677428A97BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3FF330-7294-4AD1-856C-4677428A97BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3FF330-7294-4AD1-856C-4677428A97BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B20D125-CA3C-44E7-A55B-9D334C3D6C8F}
+	EndGlobalSection
+EndGlobal
