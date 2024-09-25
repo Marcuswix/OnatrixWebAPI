@@ -21,60 +21,7 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-
-Your GitHub Actions workflow for building and deploying an ASP.NET Core application to Azure Web Apps looks mostly good, but there are a few potential issues and improvements to consider. Here’s a detailed review of your YAML file:
-
-Key Observations and Suggestions
-Order of Steps:
-
-The dotnet restore command should be placed before the dotnet build command. This is crucial because the restore step needs to complete before any build can successfully occur. Currently, you are restoring after a build command.
-Redundant Build Step:
-
-You have two dotnet build steps: one as Build with dotnet and another under Build. You can remove one of these to avoid redundancy. It’s best to call build only once after restoring dependencies.
-Publishing Path:
-
-Ensure that the path in the dotnet publish command points correctly to the .csproj file. The path you provided ("B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\OnatrixWebApi.csproj") should be valid. Confirm that the project file exists at this location.
-Output Path for Artifacts:
-
-The output directory for the dotnet publish command (C:\Output) is not referenced in the upload step. Ensure that the path to the published output is correctly specified in the Upload artifact for deployment job step.
-Use of $ in paths:
-
-The $ prefix is generally used for environment variables, so ensure the variable DOTNET_ROOT is defined and contains the correct output path from the publish step. If you're publishing to a specific directory like C:\Output, you should use that path instead.
-Action Versions:
-
-The versions you are using (like @v4 for actions) are fine, but it's often better to use a specific version tag for actions (e.g., @v4.1.0) to avoid breaking changes if a new version is released.
-Check Output After Publish:
-
-It might be useful to list the contents of the output directory after publishing to ensure the files are there before uploading.
-Revised Workflow
-Here’s a revised version of your workflow with the suggested changes:
-
-yaml
-Kopiera kod
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP.Net Core app to Azure Web App - Onatrix-webApi
-
-on:
-  push:
-    branches:
-      - master
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.x'
-
-       - name: dotnet restore
+      - name: dotnet restore
         run: dotnet restore "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln"
         
       - name: Build with dotnet
@@ -90,8 +37,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\bin\Release\net8.0\publish"  # Use the correct output path
-
+          path: "B:\\CMS_ECutbildning\\OnatrixWebApi\\OnatrixWebApi\\bin\\Release\\net8.0\\publish"  # Use the correct output path
+          
   deploy:
     runs-on: windows-latest
     needs: build
