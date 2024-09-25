@@ -34,7 +34,7 @@ jobs:
         run: dotnet build "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln" -c Release
 
       - name: Publish
-        run: dotnet publish "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln" -c Release -o "C:\Output"
+        run: dotnet publish "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi\OnatrixWebApi.csproj" -c Release -o "C:\Output"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
