@@ -21,24 +21,27 @@ jobs:
         with:
           dotnet-version: '8.x'
 
+      - name: dotnet restore
+        run: dotnet restore "./OnatrixWebApi.sln"  # Adjust the path as needed
+        
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build "./OnatrixWebApi.sln" --configuration Release
 
-      - name: Restore dependencies
-        run: dotnet restore "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln"
-
-      - name: Build
-        run: dotnet build "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln" -c Release
+      - name: Create Output Directory
+        run: New-Item -ItemType Directory -Path "C:\Output" -Force  # Skapa katalogen
 
       - name: Publish
-        run: dotnet publish "B:\CMS_ECutbildning\OnatrixWebApi\OnatrixWebApi.sln" -c Release -o "C:\Output"
+        run: dotnet publish "./OnatrixWebApi/OnatrixWebApi.csproj" --configuration Release --output "C:\Output"  # Använd C:\Output
+
+      - name: List Output Directory
+        run: ls "C:\Output"  # Kontrollera publicerade filer
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
-
+          path: "C:\\Output"  # Använd den nya utmatningssökvägen
+          
   deploy:
     runs-on: windows-latest
     needs: build
