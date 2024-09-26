@@ -1,4 +1,5 @@
 using Azure.Communication.Email;
+using OnatrixWebApi.Services;
 using OnatrixWebAPI.MiddleWares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddSingleton<IConfiguration>(provider => new ConfigurationBuild
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build());
+
+builder.Services.AddScoped<CallbackEmail>();
+builder.Services.AddScoped<QuestionEmail>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

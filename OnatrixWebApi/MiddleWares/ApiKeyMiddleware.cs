@@ -14,26 +14,25 @@ namespace OnatrixWebAPI.MiddleWares
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
+        }
+        public void OnActionExecuting(ActionExecutingContext context)
+        {
             var apiKey = _configuration["Values:ApiKey"];
 
-            if (apiKey != null) 
+            if (apiKey != null)
             {
-                if(context.HttpContext.Request.Headers.TryGetValue("Authorization", out var extractedApiKey))
+                if (context.HttpContext.Request.Headers.TryGetValue("Authorization", out var extractedApiKey))
                 {
-                    if(apiKey == extractedApiKey)
+                    if (apiKey == extractedApiKey)
                     {
                         return;
                     }
                     context.Result = new UnauthorizedResult();
-                    return; 
+                    return;
                 }
                 context.Result = new ForbidResult();
                 return;
             }
-        }
-        public void OnActionExecuting(ActionExecutingContext context)
-        {
-
         }
     }
 }
