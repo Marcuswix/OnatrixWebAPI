@@ -64,20 +64,24 @@ namespace OnatrixWebAPI.Controllers
                     return new OkObjectResult(new
                     {
                         Success = true,
-                        Status = "Email sent successfully"     
+                        Messages = "Email sent successfully"     
                     });
                 }
                 else
                 {
-                    return new BadRequestObjectResult(new
+                    return new NotFoundObjectResult(new
                     {
                         Success = false,
-                        Error = "Email sending not completed"
+                        Message = "No recipient by that emailaddress"
                     });
                 }                         
             }
-            return new BadRequestResult();
-        }
+			return new BadRequestObjectResult(new
+			{
+				Success = false,
+				Message = "Email sending not completed"
+			});
+		}
 
         // POST api/<MessageController>
         [HttpPost]
