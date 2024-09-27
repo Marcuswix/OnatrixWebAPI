@@ -20,7 +20,7 @@ namespace OnatrixWebApi.Services
                                         <td align='center' style='padding-bottom: 20px;'>
                                             <h1 style='font-size: 24px; color: #535656;'>Thanks for your question, {name}!</h1>
                                             <p style='font-size: 16px; color: #535656;'>We will answer it in a short while!</p>
-                                            <a href='https://example.com' style='display: inline-block; padding: 10px 20px; background-color: #4F5955; color: #F2EDDC; text-decoration: none; border-radius: 4px; font-size: 16px;'>To Our website</a>
+                                            <a href='https://onatrix-marcuswix-f3ccasfxa3encgcp.westeurope-01.azurewebsites.net/home/' style='display: inline-block; padding: 10px 20px; background-color: #4F5955; color: #F2EDDC; text-decoration: none; border-radius: 4px; font-size: 16px;'>To Our website</a>
                                         </td>
                                     </tr>
                                     <tr>
